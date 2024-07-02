@@ -9,6 +9,7 @@ mpFaceMesh = mp.solutions.face_mesh
 mpDraw = mp.solutions.drawing_utils
 faceMesh = mpFaceMesh.FaceMesh(refine_landmarks = True)
 drawing_spec = mpDraw.DrawingSpec(thickness=1, circle_radius=1)
+output = []
 
 
 def main():
@@ -46,15 +47,15 @@ def main():
     }
 
     # cap = cv2.VideoCapture(0)
-    cap = cv2.VideoCapture('Videos/GX010169.MP4')
-
+    cap = cv2.VideoCapture('Videos_1/GX010172-001.MP4')
     while cap.isOpened():
         ret, frame = cap.read()
         if not ret:
             continue
         frame = cv2.resize(frame, (960, 540))
         frame = cv2.flip(frame, 1)
-        frame, output = monitoring(frame, facemesh_model, eye_idxs, state_tracker, thresholds)
+        frame, curr_output = monitoring(frame, facemesh_model, eye_idxs, state_tracker, thresholds)
+        output.extend(curr_output)
         cv2.imshow('Drowsiness Detection', frame)
         
         if cv2.waitKey(1) == ord('q'):
@@ -84,9 +85,9 @@ def main():
         sheet.cell(row=i, column=7).value = ft
 
     # Save the workbook
-    workbook.save('position_data2.xlsx')
+    workbook.save('172-001.xlsx')
 
-    print("Data exported to 'position_data2.xlsx'")
+    print("Data exported to '172-001.xlsx'")
 
     cap.release()
     cv2.destroyAllWindows()

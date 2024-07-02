@@ -205,13 +205,13 @@ def monitoring(frame, facemesh_model, eye_idxs, state_tracker, thresholds):
             # cv2.putText(frame, 'Left Mirror', (img_w//2 - 20, 100), cv2.FONT_HERSHEY_SIMPLEX,  2, (200, 200, 20), 3)
         
         #Right Shoulder
-        if y <-14 and frame_ratio>=0.2:
+        if (y <-14) and (frame_ratio>=0.2).all():
             region = 'Right Shoulder'
             elapsed_time = reset_counter('9')
             # cv2.putText(frame, 'Right Shoulder', (img_w//2 - 20, 100), cv2.FONT_HERSHEY_SIMPLEX,  2, (200, 200, 20), 3)
         
         #Left Shoulder
-        if y >= 17 and frame_ratio>=0.88:
+        if (y >= 17) and (frame_ratio >= 0.88).all():
             region = 'Left Shoulder'
             elapsed_time = reset_counter('10')
             # cv2.putText(frame, 'Left Shoulder', (img_w//2 - 20, 100), cv2.FONT_HERSHEY_SIMPLEX,  2, (200, 200, 20), 3)
