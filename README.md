@@ -31,8 +31,8 @@ https://github.com/aLok-1105/driver-monitoring-system/assets/106423643/31ef5b3a-
 
 1. Clone the repository:
    ```bash
-   git clone https://github.com/your_username/drowsiness_detection.git
-   cd drowsiness_detection
+   git clone https://github.com/aLok-1105/driver-monitoring-system.git
+   cd driver-monitoring-system
 2. Install dependencies:
    ```bash
    pip install -r requirements.txt
